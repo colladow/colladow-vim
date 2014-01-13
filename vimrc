@@ -1,8 +1,5 @@
 call pathogen#infect()
 
-filetype off
-filetype plugin indent off
-set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
 syntax on
 
@@ -27,7 +24,8 @@ set guifont=Menlo:h16
 
 autocmd BufRead,BufNewFile *.py set ts=4
 autocmd BufRead,BufNewFile *.py set shiftwidth=4
+autocmd BufRead,BufNewFile *.py set expandtab
 
 autocmd BufRead,BufNewFile *.go set noexpandtab
-
-let GOPATH='/Users/wilson.collado/work/mackerel-sky'
+autocmd BufRead,BufNewFile *.go set ts=4
+autocmd BufRead,BufNewFile *.go set shiftwidth=4
