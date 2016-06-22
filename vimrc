@@ -15,7 +15,7 @@ set wildignore=*node_modules/**,*bower_components/**
 filetype plugin on
 filetype plugin indent on
 
-colorscheme vividchalk
+colorscheme molokai_dark
 
 set guioptions-=T
 set guioptions-=r
@@ -29,3 +29,44 @@ autocmd BufRead,BufNewFile *.py set expandtab
 autocmd BufRead,BufNewFile *.go set noexpandtab
 autocmd BufRead,BufNewFile *.go set ts=4
 autocmd BufRead,BufNewFile *.go set shiftwidth=4
+
+map <C-n> :NERDTreeToggle<CR>
+map <C-o> :NERDTreeFind<CR>
+
+set colorcolumn=80
+
+let g:jsx_ext_required=0
+
+" Kludge to fix global/local bs.
+let g:syntastic_javascript_checkers = ['eslint']
+
+let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
+if matchstr(local_eslint, "^\/\\w") == ''
+    let local_eslint = getcwd() . "/" . local_eslint
+endif
+if executable(local_eslint)
+    let g:syntastic_javascript_eslint_exec = local_eslint
+endif
+
+let g:CommandTFileScanner="git"
+
+function! CurrentAndParent()
+  let path = split(expand('%p'), '/')
+  let label = join(path[-2:-1], '/')
+
+  if len(path) == 0
+    let label = 'suh du'
+  endif
+
+  if label == ''
+    let label = path[-1]
+  endif
+
+  if &mod == 1
+    let label = label . ' [+]'
+  endif
+
+  return label
+endfunction
+
+autocmd VimEnter * set guitablabel=%{CurrentAndParent()}

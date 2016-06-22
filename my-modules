@@ -1,0 +1,17 @@
+bundles ---
+
+command-t
+html5
+nerdtree
+supertab
+syntastic
+vim-fugitive
+vim-javascript
+vim-jsx
+vim-less
+vim-surround
+
+colors ---
+
+molokai
+molokai_dark
