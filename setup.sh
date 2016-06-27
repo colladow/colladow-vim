@@ -13,7 +13,7 @@ mkdir -p "$autoloadPath" "$bundlePath" "$colorsPath" && \
 curl -LSso "$autoloadPath/pathogen.vim" https://tpo.pe/pathogen.vim
 
 # command-t
-git clone https://github.com/wincent/command-t.git "$bundlePath"
+git clone https://github.com/wincent/command-t.git "$bundlePath/command-t"
 cd "$bundlePath/command-t/ruby/command-t"
 ruby extconf.rb
 make
