@@ -37,15 +37,10 @@ set colorcolumn=80
 
 let g:jsx_ext_required=0
 
-" Kludge to fix global/local bs.
-let g:syntastic_javascript_checkers = ['eslint']
 
-let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
-if matchstr(local_eslint, "^\/\\w") == ''
-    let local_eslint = getcwd() . "/" . local_eslint
-endif
+let local_eslint = findfile('node_modules/.bin/eslint', '.;')
 if executable(local_eslint)
-    let g:syntastic_javascript_eslint_exec = local_eslint
+  let g:syntastic_javascript_eslint_exec = local_eslint
 endif
 
 let g:CommandTFileScanner="git"
