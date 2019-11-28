@@ -10,7 +10,6 @@ set expandtab
 set autoindent
 set backspace=indent,eol,start
 set number
-set wildignore=*node_modules/**,*bower_components/**
 
 filetype plugin on
 filetype plugin indent on
@@ -20,7 +19,11 @@ colorscheme molokai_dark
 set guioptions-=T
 set guioptions-=r
 set guioptions-=L
-set guifont=Menlo:h16
+" OSX set guifont=Menlo:h16
+set guifont=Consolas\ 16
+
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
 
 autocmd BufRead,BufNewFile *.py set ts=4
 autocmd BufRead,BufNewFile *.py set shiftwidth=4
@@ -29,21 +32,26 @@ autocmd BufRead,BufNewFile *.py set expandtab
 autocmd BufRead,BufNewFile *.go set noexpandtab
 autocmd BufRead,BufNewFile *.go set ts=4
 autocmd BufRead,BufNewFile *.go set shiftwidth=4
+autocmd BufRead,BufNewFile *.go map <F2> :GoTest<CR>
+autocmd BufRead,BufNewFile *.go map <F3> :GoVet<CR>
+autocmd BufRead,BufNewFile *.go nnoremap <C-t> :tabnew<CR>
 
 map <C-n> :NERDTreeToggle<CR>
 map <C-o> :NERDTreeFind<CR>
+map <C-f> :CommandTFlush<CR>
+map <C-t> :tabnew<CR>
+nmap ` :tabnext<CR>
+nmap ~ :tabprev<CR>
+vmap <C-c> "+y
+imap <C-v> <C-r>+
 
 set colorcolumn=80
 
 let g:jsx_ext_required=0
-
-
-let local_eslint = findfile('node_modules/.bin/eslint', '.;')
-if executable(local_eslint)
-  let g:syntastic_javascript_eslint_exec = local_eslint
-endif
-
-let g:CommandTFileScanner="git"
+let g:CommandTWildIgnore='*/node_modules'
+let g:ale_linters = {
+      \'javascript': ['eslint'],
+      \}
 
 function! CurrentAndParent()
   let path = split(expand('%p'), '/')

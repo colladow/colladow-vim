@@ -28,6 +28,7 @@ git clone https://github.com/mxw/vim-jsx.git "$bundlePath/vim-jsx"
 git clone https://github.com/groenewege/vim-less "$bundlePath/vim-less"
 git clone https://github.com/tpope/vim-surround.git "$bundlePath/vim-surround"
 git clone https://github.com/fatih/vim-go.git "$bundlePath/vim-go"
+git clone https://github.com/dense-analysis/ale "$bundlePath/ale"
 
 # colors
 curl -o "$colorsPath/molokai.vim" https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
