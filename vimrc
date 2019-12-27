@@ -44,6 +44,7 @@ nmap ` :tabnext<CR>
 nmap ~ :tabprev<CR>
 vmap <C-c> "+y
 imap <C-v> <C-r>+
+imap <C-BS> <C-W>
 
 set colorcolumn=80
 
